@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:untitled1/application/appCubit.dart';
+import 'package:untitled1/application/bloc.dart';
+import 'package:untitled1/data/counter.dart';
 import 'package:untitled1/navigation/ui.dart';
 
 void main() {

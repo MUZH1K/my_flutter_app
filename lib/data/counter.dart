@@ -1,3 +1,3 @@
-class CounterData {
- static int counter = 1 ;
+class CounterRepository {
+ int counter = 0;
 }

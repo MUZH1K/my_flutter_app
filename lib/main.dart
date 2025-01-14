@@ -9,7 +9,7 @@ import 'package:hive/hive.dart';
 import 'data/provider.dart';
 
 void main() {
-  Provider.initHive();
+
   runApp(const MyApp());
 }
 

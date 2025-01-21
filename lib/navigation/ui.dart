@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:untitled1/application/bloc.dart';
-import 'package:untitled1/data/counter.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -35,10 +33,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 ElevatedButton(
+                  onPressed: () =>
+                      context.read<CounterBloc>().add(IncrementCounter()),
+                  child: Text('+'),
+                ),
+                ElevatedButton(
                     onPressed: () =>
-                        context.read<CounterBloc>().add(IncrementCounter()),
-
-                    child: Text('+'))
+                        context.read<CounterBloc>().add(UpdateCounter()),
+                    child: Text('='))
               ],
             ),
           );

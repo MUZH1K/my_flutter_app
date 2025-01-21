@@ -1,16 +1,15 @@
-import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:untitled1/data/counter.dart';
+import 'package:untitled1/services/dataBase/hive.dart';
 
 class Provider {
-  initHive() async {
-    final applicationDocumentDir =
-        await path_provider.getApplicationCacheDirectory();
-    Hive.init(applicationDocumentDir.path);
-    await Hive.openBox('counterBox');
+  void initializeDb() {
+    HiveDb().initHive();
   }
 
-   void putCounter() {
-    Hive.box('counterBox').put(1, CounterRepository().getCounter);
+  void saveDb(key, value) {
+    HiveDb().saveHive(key, value);
+  }
+
+  Future<dynamic> readDb(key) async {
+    return await HiveDb().readHive(key);
   }
 }

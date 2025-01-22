@@ -6,10 +6,16 @@ class CounterBloc extends Bloc<CounterEvent, int> {
 
   CounterBloc(this.counterRepository) : super(counterRepository.getCounter) {
     on<IncrementCounter>(_onIncrement);
+    on<UpdateCounter>(_onUpdate);
   }
 
   void _onIncrement(event, emit) {
-    counterRepository.setCounter = 1;
+    counterRepository.incrementValue(state + 1);
+    emit(counterRepository.getCounter);
+  }
+
+  Future<void> _onUpdate(event, emit) async {
+    await counterRepository.updateValue();
     emit(counterRepository.getCounter);
   }
 }
@@ -17,3 +23,5 @@ class CounterBloc extends Bloc<CounterEvent, int> {
 abstract class CounterEvent {}
 
 class IncrementCounter extends CounterEvent {}
+
+class UpdateCounter extends CounterEvent {}

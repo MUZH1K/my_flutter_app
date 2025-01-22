@@ -2,27 +2,23 @@ import 'package:untitled1/data/provider.dart';
 import 'package:untitled1/services/dataBase/hive.dart';
 
 class CounterRepository {
-  CounterRepository() {
-    provider.initializeDb();
-  }
-
-  Provider provider = Provider();
+  final provider = ProviderDataBase();
 
   int _counter = 0;
 
-  dynamic get getCounter => _counter;
+  get getCounter => _counter;
 
   set setCounter(int value) {
     _counter = value;
   }
 
-  void incrementValue(value) {
-    provider.saveDb(Operation.keyBox.name, value);
+  void incrementValue(value, nameBox) {
+    provider.save(KeyHive.keyCounterBox.name, value, nameBox);
     setCounter = value;
   }
 
-  updateValue(key) async {
-    var qwerty = await provider.readDb(key);
-    setCounter = qwerty;
+  Future<void> updateValue(key, nameBox) async {
+    var _value = await provider.read(key, nameBox);
+    setCounter = _value;
   }
 }

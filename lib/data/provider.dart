@@ -1,15 +1,11 @@
 import 'package:untitled1/services/dataBase/hive.dart';
 
-class Provider {
-  void initializeDb() {
-    HiveDb().initHive();
+class ProviderDataBase {
+  void save(key, value, nameBox) {
+    HiveDb().save(key, value, nameBox);
   }
 
-  void saveDb(key, value) {
-    HiveDb().saveHive(key, value);
-  }
-
-  Future<dynamic> readDb(key) async {
-    return await HiveDb().readHive(key);
+  Future<dynamic> read(key, nameBox) async {
+    return await HiveDb().read(key, nameBox);
   }
 }

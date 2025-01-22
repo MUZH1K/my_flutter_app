@@ -12,12 +12,13 @@ class CounterBloc extends Bloc<CounterEvent, int> {
   }
 
   void _onIncrement(event, emit) {
-    counterRepository.incrementValue(state + 1);
+    counterRepository.incrementValue(state + 1, NameHive.counterBox.name);
     emit(counterRepository.getCounter);
   }
 
-  void _onUpdate(event, emit) async {
-    await counterRepository.updateValue(Operation.keyBox.name);
+  Future<void> _onUpdate(event, emit) async {
+    await counterRepository.updateValue(
+        KeyHive.keyCounterBox.name, NameHive.counterBox.name);
     emit(counterRepository.getCounter);
   }
 }

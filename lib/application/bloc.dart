@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:untitled1/data/counter.dart';
-import 'package:untitled1/services/dataBase/hive.dart';
 
 class CounterBloc extends Bloc<CounterEvent, int> {
   final CounterRepository counterRepository;
@@ -12,13 +10,12 @@ class CounterBloc extends Bloc<CounterEvent, int> {
   }
 
   void _onIncrement(event, emit) {
-    counterRepository.incrementValue(state + 1, NameHive.counterBox.name);
+    counterRepository.incrementValue(state + 1);
     emit(counterRepository.getCounter);
   }
 
   Future<void> _onUpdate(event, emit) async {
-    await counterRepository.updateValue(
-        KeyHive.keyCounterBox.name, NameHive.counterBox.name);
+    await counterRepository.updateValue();
     emit(counterRepository.getCounter);
   }
 }

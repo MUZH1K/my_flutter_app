@@ -1,6 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 class HiveDb {
+  Future<void> initHive() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    final appDocumentDir = await getApplicationDocumentsDirectory();
+    Hive.init(appDocumentDir.path);
+  }
+
   Future<void> save(key, dynamic value, nameBox) async {
     var box = await Hive.openBox(nameBox);
     box.put(key, value);
@@ -12,6 +20,6 @@ class HiveDb {
   }
 }
 
-enum KeyHive { keyCounterBox }
+enum HiveKey { counterBoxKey }
 
-enum NameHive { counterBox }
+enum HiveName { counterBox }

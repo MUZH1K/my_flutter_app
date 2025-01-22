@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:untitled1/application/bloc.dart';
 import 'package:untitled1/data/counter.dart';
 import 'package:untitled1/navigation/ui.dart';
-
-
+import 'package:untitled1/services/dataBase/hive.dart';
 
 void main() {
-  Hive.initFlutter();
+  HiveDb().initHive();
   runApp(const MyApp());
 }
 

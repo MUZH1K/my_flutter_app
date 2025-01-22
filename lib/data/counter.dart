@@ -2,7 +2,7 @@ import 'package:untitled1/data/provider.dart';
 import 'package:untitled1/services/dataBase/hive.dart';
 
 class CounterRepository {
-  final provider = DataBaseProvider();
+  final provider = ProviderDataBase();
 
   int _counter = 0;
 
@@ -18,7 +18,7 @@ class CounterRepository {
   }
 
   Future<void> updateValue() async {
-    var value = await provider.read(
+    final value = await provider.read(
         HiveKey.counterBoxKey.name, HiveName.counterBox.name);
     setCounter = value;
   }

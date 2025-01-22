@@ -1,6 +1,6 @@
 import 'package:untitled1/services/dataBase/hive.dart';
 
-class DataBaseProvider {
+class ProviderDataBase {
   void save(key, value, nameBox) async {
     await HiveDb().save(key, value, nameBox);
   }

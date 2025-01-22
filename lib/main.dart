@@ -6,7 +6,8 @@ import 'package:untitled1/navigation/ui.dart';
 import 'package:untitled1/services/dataBase/hive.dart';
 
 void main() {
-  HiveDb().initHive();
+  WidgetsFlutterBinding.ensureInitialized();
+  HiveDb().init();
   runApp(const MyApp());
 }
 

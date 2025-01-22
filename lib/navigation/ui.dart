@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled1/application/bloc.dart';
@@ -29,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   'You have pushed the button this many times:',
                 ),
                 Text(
-                  '${counter}',
+                  '$counter',
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 ElevatedButton(
